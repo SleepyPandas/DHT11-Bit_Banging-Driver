@@ -12,11 +12,4 @@
 ../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:444:9:BSP_PB_GetState	1
 ../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:454:6:BSP_PB_IRQHandler	1
 ../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:464:13:BSP_PB_Callback	1
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:482:9:BSP_COM_Init	3
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:520:9:BSP_COM_DeInit	3
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:553:26:MX_USART_Init	1
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:651:9:BSP_COM_SelectLogPort	2
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:678:1:__io_putchar	1
 ../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:697:13:BUTTON_USER_EXTI_Callback	1
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:708:13:COM1_MspInit	1
-../Drivers/BSP/STM32H5xx_Nucleo/stm32h5xx_nucleo.c:742:13:COM1_MspDeInit	1

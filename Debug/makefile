@@ -61,8 +61,8 @@ all: main-build
 main-build: LED_BLINK_1.0.elf secondary-outputs
 
 # Tool invocations
-LED_BLINK_1.0.elf LED_BLINK_1.0.map: $(OBJS) $(USER_OBJS) C:\Users\AnthonyPC\Desktop\Coding\ Sutff\ 2\STM32\ STuff\LED_BLINK_1.0\STM32H503RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LED_BLINK_1.0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\AnthonyPC\Desktop\Coding Sutff 2\STM32 STuff\LED_BLINK_1.0\STM32H503RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_1.0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LED_BLINK_1.0.elf LED_BLINK_1.0.map: $(OBJS) $(USER_OBJS) C:\Users\AnthonyPC\Documents\GitHub\LED_BLINK_1.0\STM32H503RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LED_BLINK_1.0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\AnthonyPC\Documents\GitHub\LED_BLINK_1.0\STM32H503RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_1.0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
