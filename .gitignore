@@ -54,3 +54,27 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Generated make/deps
+objects.list
+objects.mk
+sources.mk
+subdir.mk
+
+# IDE metadata (STM32CubeIDE/Eclipse)
+.settings/
+.metadata/
+.externalToolBuilders/
+.loadpath
+.launch
+.cproject
+.project
+.mxproject
+.stm32cubeide/
+
+# Logs / temp / OS
+*.log
+*.tmp
+~$*
+Thumbs.db
+.DS_Store
