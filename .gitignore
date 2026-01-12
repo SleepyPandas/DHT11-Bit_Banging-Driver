@@ -1,4 +1,18 @@
+# STM32 build output directories
+/Debug/
 /Release/
+
+# STM32CubeMX / IDE artifacts
+*.cyclo
+*.list
+*.uvoptx
+*.uvprojx
+*.s19
+*.bin
+
+# Keep CubeMX configuration under version control
+!*.ioc
+
 # Prerequisites
 *.d
 

@@ -99,13 +99,12 @@ int main(void)
   {
 
     /* USER CODE END WHILE */
-	/* Toggle the green LED */
-	  BSP_LED_Toggle(LED_GREEN);
-	  HAL_Delay(1000);
-	  BSP_LED_Toggle(LED_GREEN);
-	  HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */
+	  HAL_GPIO_WritePin(LEDControl_GPIO_Port, LEDControl_Pin, GPIO_PIN_SET);
+	  HAL_Delay(100);
+	  HAL_GPIO_WritePin(LEDControl_GPIO_Port, LEDControl_Pin, GPIO_PIN_RESET);
+	  HAL_Delay(800);
   }
   /* USER CODE END 3 */
 }
@@ -183,6 +182,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LEDControl_GPIO_Port, LEDControl_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pins : ARD_D1_TX_Pin ARD_D0_RX_Pin */
   GPIO_InitStruct.Pin = ARD_D1_TX_Pin|ARD_D0_RX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -190,6 +192,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.Alternate = GPIO_AF4_USART1;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LEDControl_Pin */
+  GPIO_InitStruct.Pin = LEDControl_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(LEDControl_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
