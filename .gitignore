@@ -80,7 +80,7 @@ subdir.mk
 .metadata/
 .externalToolBuilders/
 .loadpath
-.launch
+*.launch
 .cproject
 .project
 .mxproject
