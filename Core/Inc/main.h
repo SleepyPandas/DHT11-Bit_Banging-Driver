@@ -63,6 +63,10 @@ void Error_Handler(void);
 #define ARD_D1_TX_GPIO_Port GPIOB
 #define ARD_D0_RX_Pin GPIO_PIN_15
 #define ARD_D0_RX_GPIO_Port GPIOB
+#define Test_Pin GPIO_PIN_8
+#define Test_GPIO_Port GPIOC
+#define TestingPIND2_Pin GPIO_PIN_10
+#define TestingPIND2_GPIO_Port GPIOA
 #define T_SWDIO_Pin GPIO_PIN_13
 #define T_SWDIO_GPIO_Port GPIOA
 #define T_SWCLK_Pin GPIO_PIN_14
