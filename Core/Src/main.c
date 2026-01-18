@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,6 +106,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  // see https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf?srsltid=AfmBOorSyVOD996zWNFTVFMWIrC0eVVUjCtXqNslasQQP2nxrXqggH95
   while (1)
   {
 
@@ -131,6 +133,59 @@ int main(void)
 			  break;
 		  }
 	  }
+
+	  // Start Data Transmission 40 bits
+		// wait for low, then when it goes high, read the bit either 26-28ms or 50 if it was high
+		/*
+		 * Data format: 8bit integral RH data + 8bit decimal RH data + 8bit integral T data + 8bit decimal T
+		 data + 8bit check sum. If the data transmission is right, the check-sum should be the last 8bit of
+		 "8bit integral RH data + 8bit decimal RH data + 8bit integral T data + 8bit decimal T data".
+		 */
+	  // Create 5 blocks of 8 bits
+		uint8_t data[5];
+
+		for (int i = 0; i < 5; i++) {
+			uint8_t current_byte = 0; //fresh 0000 0000
+			for (int j = 0; j < 8; j++) {
+				// wait for low -> High Indicating Data
+				while (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port, DHT11_Data_Pin)
+						== GPIO_PIN_RESET) {
+					// Wait loop
+				}
+				// Shift left for every new bit
+				current_byte <<= 1;
+				// wait 40 microseconds then read (low is 20ms) hi is 70ms
+				delay_microseconds(40);
+				// if still high after 40 seconds its 1
+				if (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port, DHT11_Data_Pin)
+						== GPIO_PIN_SET) {
+					// 1 = 0000 0001 bit-shift with Or Operator
+					current_byte |= 1;
+				}
+				// if 0 do nothing since we already left shifted
+				// Wait for high pulse to end
+				while (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port, DHT11_Data_Pin)
+						== GPIO_PIN_SET) {
+					// Wait loop
+				}
+			}
+			// write to array
+			data[i] = current_byte;
+		}
+
+		// Next we check if the data is verified via checksum by (datasheet)
+		// data[1] and data [3] contain the float data but outside of
+		// tolerance for this sensor
+		if (data[4] == (data[0] + data[1] + data[2] + data[3])) {
+			float humidity = data[0];
+			float temperature = data[2];
+
+		} else {
+			printf("error with reading");
+		}
+
+		HAL_Delay(2000);
+
 
     /* USER CODE END WHILE */
 
