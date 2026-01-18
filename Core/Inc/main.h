@@ -63,8 +63,8 @@ void Error_Handler(void);
 #define ARD_D1_TX_GPIO_Port GPIOB
 #define ARD_D0_RX_Pin GPIO_PIN_15
 #define ARD_D0_RX_GPIO_Port GPIOB
-#define Test_Pin GPIO_PIN_8
-#define Test_GPIO_Port GPIOC
+#define DHT11_Data_Pin GPIO_PIN_8
+#define DHT11_Data_GPIO_Port GPIOC
 #define TestingPIND2_Pin GPIO_PIN_10
 #define TestingPIND2_GPIO_Port GPIOA
 #define T_SWDIO_Pin GPIO_PIN_13
@@ -75,8 +75,6 @@ void Error_Handler(void);
 #define T_JTDI_GPIO_Port GPIOA
 #define T_SWO_Pin GPIO_PIN_3
 #define T_SWO_GPIO_Port GPIOB
-#define LEDControl_Pin GPIO_PIN_5
-#define LEDControl_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
