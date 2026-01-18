@@ -57,7 +57,13 @@ static void MX_TIM1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void delay_microseconds(uint16_t microseconds) {
+// HAL but in micro seconds
+	htim1.Instance->CNT = 0;
+	while (htim1.Instance->CNT < microseconds) {
+		// Blocking Loop
+	};
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +97,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start(&htim1);
   /* USER CODE END 2 */
 
   /* Initialize led */
@@ -102,13 +108,35 @@ int main(void)
   while (1)
   {
 
+	  // Pull down 18ms to send start signal to DHT11
+	  HAL_GPIO_WritePin(DHT11_Data_GPIO_Port,DHT11_Data_Pin, GPIO_PIN_RESET);
+	  delay_microseconds(18000);
+	  // Pull up 20-40us wait for DHT11 response
+	  HAL_GPIO_WritePin(DHT11_Data_GPIO_Port,DHT11_Data_Pin, GPIO_PIN_SET);
+	  delay_microseconds(20);
+
+	  // add Timeout
+	  uint16_t timer_val = 0;
+
+	  // Verify handshake based on Datasheet 80 millsec hi then low
+	  while (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port,DHT11_Data_Pin) == GPIO_PIN_RESET) {
+		  //Do nothing if its Low
+	  }
+
+	  while (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port,DHT11_Data_Pin) == GPIO_PIN_SET) {
+		  //Do nothing if its High or timeout
+		  delay_microseconds(1);
+		  timer_val++;
+		  if (timer_val > 100) {
+			  break;
+		  }
+	  }
+
     /* USER CODE END WHILE */
 
+
     /* USER CODE BEGIN 3 */
-      HAL_GPIO_WritePin(Test_GPIO_Port, Test_Pin, GPIO_PIN_SET);
-      HAL_Delay(500);
-      HAL_GPIO_WritePin(Test_GPIO_Port, Test_Pin, GPIO_PIN_RESET);
-      HAL_Delay(500);
+
   }
   /* USER CODE END 3 */
 }
