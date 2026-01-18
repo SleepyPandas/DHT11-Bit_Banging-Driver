@@ -92,3 +92,4 @@ subdir.mk
 ~$*
 Thumbs.db
 .DS_Store
+/tatus
