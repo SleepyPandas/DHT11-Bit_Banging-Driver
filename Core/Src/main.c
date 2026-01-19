@@ -68,6 +68,13 @@ void delay_microseconds(uint16_t microseconds) {
 		// Blocking Loop
 	};
 }
+
+int DHT11_Read_Data(float *temp, float *hum) {
+
+}
+
+
+
 /* USER CODE END 0 */
 
 /**
@@ -386,9 +393,6 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(DHT11_Data_GPIO_Port, DHT11_Data_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TestingPIND2_GPIO_Port, TestingPIND2_Pin, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : PA2 */
   GPIO_InitStruct.Pin = GPIO_PIN_2;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -411,13 +415,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(DHT11_Data_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : TestingPIND2_Pin */
-  GPIO_InitStruct.Pin = TestingPIND2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
-  HAL_GPIO_Init(TestingPIND2_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
