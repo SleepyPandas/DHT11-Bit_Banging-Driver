@@ -58,16 +58,13 @@ if (HAL_GPIO_ReadPin(DHT11_Data_GPIO_Port, DHT11_Data_Pin) == GPIO_PIN_SET) {
 // Else: Pulse would be LOW if it was a '0' (28us), leaving the LSB as 0
 ```
 
-### 4. Data Validation (Post-Silicon Methodology)
+### 4. Data Validation
 To ensure data integrity, the driver implements the checksum verification native to the DHT11. This prevents erroneous readings due to noise or timing violations.
 *   **Formula**: `(Integral_RH + Decimal_RH + Integral_T + Decimal_T) == Checksum`
 
 ---
 
-
-
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Hardware Connections
 | STM32 Pin | DHT11 Pin | Description |
@@ -84,9 +81,14 @@ To ensure data integrity, the driver implements the checksum verification native
     *   **Baud**: 115200
     *   **Parity**: None, **Stop Bits**: 1
 
-## 📂 File Structure
+## File Structure
 *   `Core/Src/main.c`: Contains the `DHT11_Read_Data` driver and main application loop.
 *   `Core/Inc/main.h`: Pin definitions and macros.
+
+## DataSheets
+*[DGH11 Data Sheet](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)*
+<br>
+*[STM32H503RB Datasheet](https://www.st.com/resource/en/user_manual/um3121-stm32h5-nucleo64-board-mb1814-stmicroelectronics.pdf)*
 
 ---
 *Anthony*
