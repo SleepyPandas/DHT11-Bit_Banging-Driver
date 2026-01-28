@@ -1,6 +1,23 @@
 # STM32 build output directories
 /Debug/
 /Release/
+/build/
+/cmake/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+*.ninja
+.ninja_deps
+.ninja_log
+Testing/
+CMakeUserPresets.json
 
 # STM32CubeMX / IDE artifacts
 *.cyclo
@@ -85,6 +102,10 @@ subdir.mk
 .project
 .mxproject
 .stm32cubeide/
+
+# VS Code / clangd
+.vscode/
+.clangd
 
 # Logs / temp / OS
 *.log
