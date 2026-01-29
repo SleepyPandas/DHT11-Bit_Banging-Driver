@@ -112,7 +112,7 @@ int main(void)
 
 		// Call Driver DHT11
 
-		if (DHT11_Read_Data(&temp, &hum) == 0) {
+		if (DHT11_Read_Data(DHT11_Data_GPIO_Port, DHT11_Data_Pin, &temp, &hum) == 0) {
 			// If Success (Return 0)
 			sprintf(msg, "Temp: %i C, Hum: %i  %%\r\n", temp, hum);
 		} else {
