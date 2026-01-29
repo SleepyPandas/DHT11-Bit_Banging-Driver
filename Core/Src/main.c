@@ -123,7 +123,7 @@ int main(void)
 		HAL_UART_Transmit(&huart3, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
 
 		// we delay to not overload the sensor
-		HAL_Delay(2000);
+		HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
