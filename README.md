@@ -55,6 +55,9 @@ The DHT11 uses a strict timing-based protocol. This driver implements the half-d
     *   **Logic 1**: 50 us LOW -> ~70 us HIGH
 4.  **Stop Signal**: Release bus.
 
+<img width="800"  alt="Diagram DHT11" src="https://github.com/user-attachments/assets/d90e5530-fc06-42d9-bc2d-fe66a1d1893d" />
+
+
 ### 2. Precise Timing Control
 Standard `HAL_Delay()` only provides millisecond resolution, which is insufficient for the DHT11 protocol (20 us - 80 us tolerances). I address this by configuring **TIM1** as a microsecond counter:
 ```c
