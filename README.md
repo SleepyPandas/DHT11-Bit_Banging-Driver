@@ -1,8 +1,10 @@
 # STM32 DHT11 Bit-Banging Driver
 
-[![Platform](https://img.shields.io/badge/Platform-STM32H5-003399)](https://www.st.com/en/microcontrollers-microprocessors/stm32h5-series.html)
+
 [![Language](https://img.shields.io/badge/Language-C-A8B9CC)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Category](https://img.shields.io/badge/Category-Bare_Metal_Driver-green)]()
+![Architecture](https://img.shields.io/badge/Architecture-Bare_Metal-blue)
+![Platform](https://img.shields.io/badge/Platform-STM32_ArmCortex_M33-42f5da)
+![Sensor](https://img.shields.io/badge/Sensor-DHT11-red)
 
 ## Project Overview
 This project implements a **custom bit-banging driver** for the DHT11 temperature and humidity sensor on the STM32H503RB Nucleo-64 development board. The driver is split into a dedicated module (`DHT11_Driver.c/.h`) and is called from `main.c` to read the sensor and log values over UART.
